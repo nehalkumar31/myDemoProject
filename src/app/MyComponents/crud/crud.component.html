@@ -1,0 +1,51 @@
+<div class="container border border-danger mt-5">
+  <form name="myForm" #frm="ngForm" (ngSubmit)="onSubmitBtn(frm)">
+    <div class="form-group container">
+      <label for="name" class="form-label">Name</label>
+      <input type="text"class="form-control" name="name" #name="ngModel" ngModel>
+      <label for="job" class="form-label">Job</label>
+      <input type="text" class="form-control" name="job" #job="ngModel" ngModel>
+    </div>
+    <div class="form-group container myclass">
+      <button class="btn btn-secondary mt-3">Submit form</button>
+    </div>
+  </form>
+</div>
+
+
+
+<div class="container border border-info">
+  <h2>old data</h2>
+  <button class="btn btn-info mt-3 offset-5" (click)="getAPiSerData()">Get Data</button>
+  <table class="table ">
+    <tr>
+      <th>ID</th>
+      <th>First Name</th>
+      <th>Last Name</th>
+      <th>Email</th>
+      <th>Action</th>
+      <th>Action</th>
+    </tr>
+    <tr *ngFor="let data of userData">
+      <td>{{data.id}}</td>
+      <td>{{data.first_name}}</td>
+      <td>{{data.last_name}}</td>
+      <td>{{data.email}}</td>
+      <td><i (click)="onDelete(data)" class="fa fa-trash" style="font-size:20px;color:red;"></i></td>
+      <td><i (click)="OnEdit(data)" class="fa fa-edit" style="font-size:20px;color:rgb(43, 255, 0);"></i></td>
+    </tr>
+  </table>
+</div>
+
+<div class="container border border-success">
+ <table class="table">
+   <tr>
+    <th>Name</th>
+    <th>job</th>
+   </tr>
+   <tr *ngFor="let data of formData">
+      <td>{{data.name}}</td>
+      <td>{{data.job}}</td>
+   </tr>
+ </table>
+</div>

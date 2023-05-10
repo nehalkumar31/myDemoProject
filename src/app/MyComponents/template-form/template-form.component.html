@@ -1,0 +1,73 @@
+<div class="myclass">
+    <h2>Template-Form</h2>
+</div>
+
+<div class="container border border-danger">
+<form name="MyForm" #ng="ngForm" (ngSubmit)="ng.form.valid && onsubmitbtn(ng)">
+    <div>
+        <input type="hidden" name="id" #id="ngModel"ngModel
+        [(ngModel)]="idd">
+    </div>
+    <div class="form-group">
+     <label for="username" class="form-label">Username</label>
+     <input type="text" class="form-control" name="uname" #uname="ngModel"ngModel 
+     [ngClass]="{'is-invalid':ng.submitted && uname.invalid}"
+     required minlength="4" maxlength="10"  [(ngModel)]="un">
+     <div *ngIf="uname.touched" class="invalid-feedback">
+       <div *ngIf="uname.errors?.['required']"> This field is required</div>
+       <div *ngIf="uname.errors?.['minlength']"> Minimum 4 letters required</div>
+       <div *ngIf="uname.errors?.['maxlength']"> Maximum 10 letters allowed</div>
+     </div>
+    </div>
+
+    <div class="form-group">
+     <label for="username" class="form-label">Email</label>
+     <input type="email" class="form-control" name="email" #email="ngModel"ngModel 
+     [ngClass]="{'is-invalid':ng.submitted && email.invalid}"
+     required  pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$"  [(ngModel)]="eml">
+     <div *ngIf="email.touched" class="invalid-feedback">
+       <div *ngIf="email.errors?.['required']"> This field is required</div>
+       <div *ngIf="email.errors?.['pattern']"> Please enter valid email ID</div>
+ 
+     </div>
+    </div>
+
+    <div class="form-group">
+     <label for="Password" class="form-label">Password</label>
+     <input type="password" class="form-control" name="pass" #pass="ngModel"ngModel 
+     [ngClass]="{'is-invalid':ng.submitted && pass.invalid}"
+     required minlength="4" maxlength="10"  [(ngModel)]="ps">
+     <div *ngIf="pass.touched" class="invalid-feedback">
+       <div *ngIf="pass.errors?.['required']"> This field is required</div>
+       <div *ngIf="pass.errors?.['minlength']"> Minimum 4 letters required</div>
+       <div *ngIf="pass.errors?.['maxlength']"> Maximum 10 letters allowed</div>
+     </div>
+    </div>
+    <div class="form-group">
+        <button type="submit" class="btn btn-info mt-3">Submit</button>
+    </div>
+</form>
+</div>
+
+<div class="container border border-info">
+ <table class="table table-primary" *ngIf="showTable">
+    <tr>
+        <th>Username</th>
+        <th>Email</th>
+        <th>Password</th>
+        <th>Action</th>
+        <th>Action</th>
+    </tr>
+    <tr *ngFor="let data of allData">
+         <td>{{data.uname}}</td>
+         <td>{{data.email}}</td>
+         <td>{{data.pass}}</td>
+         <td>
+            <button class="btn btn-info" (click)="onupdate(data)">Update</button>
+         </td>
+         <td>
+            <button class="btn btn-danger" (click)="ondelete(data)">Delete</button>
+         </td>
+    </tr>
+ </table>
+</div>

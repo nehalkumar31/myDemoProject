@@ -1,0 +1,39 @@
+<div class="myclass">
+    <h1 class="mt-3">Directives</h1>
+</div>
+
+<div class="container border border-danger">
+ 
+    <h4>star ng if</h4>
+  
+    <div>
+        <h2 *ngIf="true">this is normal text 1</h2>
+        <h2 *ngIf="false">this is normal text 2</h2>
+        <h2 *ngIf="showtext">this is normal text 3</h2>
+        <h2 *ngIf="showtext">this is normal text 4</h2>
+    </div>
+
+</div>
+<br>
+<div class="container border border-success">
+    <h4>star ng for</h4>
+  <div *ngFor="let data of allData">
+    <h4>{{data.name}}</h4>
+    <h4>{{data.surname}}</h4>
+    <h4>{{data.age}}</h4>
+    <h4>{{data.skill}}</h4>
+  </div>
+</div>
+<br>
+<div class="container border border-info">
+    <h4>ng Switch</h4>
+    <div [ngSwitch]="states">
+        <div *ngSwitchCase="'mh'"><h2>You have selected Maharashtra</h2></div>
+        <div *ngSwitchCase="'rj'"><h2>You have selected Rajsthan</h2></div>
+        <div *ngSwitchCase="'gj'"><h2>You have selected Gujrat</h2></div>
+        <div *ngSwitchCase="'mp'"><h2>You have selected Madhya Pradesh</h2></div>
+        <div *ngSwitchDefault><h2> Error Please try again.!</h2></div>
+
+    </div>
+
+</div>
